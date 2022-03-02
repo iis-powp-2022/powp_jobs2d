@@ -29,10 +29,14 @@ public class MyAdapter extends DrawPanelController implements Job2dDriver {
     line.setEndCoordinates(x, y);
 
     drawLine(line);
+    this.setPosition(x, y);
   }
 
   @Override
   public String toString() {
-    return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+    return "MyAdapter{" +
+        "startX=" + startX +
+        ", startY=" + startY +
+        '}';
   }
 }
