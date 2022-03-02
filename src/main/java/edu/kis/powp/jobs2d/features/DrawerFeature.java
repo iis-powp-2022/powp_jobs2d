@@ -28,7 +28,5 @@ public class DrawerFeature {
 	 * 
 	 * @return drawPanelController.
 	 */
-	public static DrawPanelController getDrawerController() {
-		return drawerController;
-	}
+	public static DrawPanelController getDrawerController() {return drawerController;}
 }
