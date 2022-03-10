@@ -1,0 +1,3 @@
+Z adaptera klasy powinniśmy korzystać kiedy
+chcemy aby współcziałały ze sobą obiekty
+o niekompatybilnych interfejsach
