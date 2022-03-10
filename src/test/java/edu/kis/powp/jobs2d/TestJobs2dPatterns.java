@@ -1,13 +1,16 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.CustomLine;
+import edu.kis.powp.jobs2d.drivers.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.MyDriver;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
@@ -49,6 +52,13 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver testDriver = new MyDriver();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
+
+		Job2dDriver lineDrawerAdapterDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Chosen line adapter", lineDrawerAdapterDriver);
+
+		Job2dDriver customLineDiver = new LineDrawerAdapter(
+				new CustomLine().setColor(Color.ORANGE).setDotted(true).setThickness(10.0F));
+		DriverFeature.addDriver("Custom Line adapter", customLineDiver);
 
 		DriverFeature.updateDriverInfo();
 	}
