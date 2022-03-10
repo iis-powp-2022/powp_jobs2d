@@ -1,6 +1,6 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +15,7 @@ import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.line.CustomLine;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class TestJobs2dPatterns {
@@ -48,8 +49,14 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawPanelControllerAdapter();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
-		Job2dDriver specialLineDrawer = new LineDrawerAdapter(LineFactory.getSpecialLine());
-		DriverFeature.addDriver("Special Line Simulator", specialLineDrawer);
+		Job2dDriver specialLineDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Special Line Simulator", specialLineDriver);
+
+		Job2dDriver dottedLineDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
+		DriverFeature.addDriver("Dotted Line Simulator", dottedLineDriver);
+
+		Job2dDriver customLineDriver = new LineDrawerAdapter(new CustomLine(Color.YELLOW, 6.9f, true));
+		DriverFeature.addDriver("Custom Line Simulator", customLineDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
