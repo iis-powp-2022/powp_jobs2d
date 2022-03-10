@@ -39,4 +39,10 @@ public class LineDrawerAdapter extends DrawPanelController implements Job2dDrive
     DrawerFeature.getDrawerController().drawLine(line);
     setPosition(x, y);
   }
+
+  @Override
+  public String toString()
+  {
+    return "Line Drawer";
+  }
 }

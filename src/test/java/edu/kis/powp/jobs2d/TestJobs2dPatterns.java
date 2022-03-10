@@ -7,8 +7,10 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelControllerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -46,6 +48,9 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawPanelControllerAdapter();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
+		Job2dDriver specialLineDrawer = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Special Line Simulator", specialLineDrawer);
+
 		DriverFeature.updateDriverInfo();
 	}
 
@@ -57,8 +62,8 @@ public class TestJobs2dPatterns {
 	private static void setupDefaultDrawerVisibilityManagement(Application application) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
 		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
-				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
+				new SelectChangeVisibleOptionListener(defaultDrawerWindow), false);
+		//defaultDrawerWindow.setVisible(true);
 	}
 
 	/**

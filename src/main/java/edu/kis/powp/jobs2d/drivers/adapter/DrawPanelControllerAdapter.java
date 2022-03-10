@@ -35,6 +35,6 @@ public class DrawPanelControllerAdapter extends DrawPanelController implements J
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Draw Panel Controller";
 	}
 }
