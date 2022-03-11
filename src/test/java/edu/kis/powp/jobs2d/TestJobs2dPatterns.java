@@ -1,14 +1,10 @@
 package edu.kis.powp.jobs2d;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.JaneDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelControllerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -16,7 +12,11 @@ import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.line.CustomLine;
-import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -31,9 +31,12 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager(), 1);
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), 2);
+		SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), 3);
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener1);
 		application.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		application.addTest("Figure Jane", selectTestFigureOptionListener3);
 	}
 
 	/**
@@ -57,6 +60,9 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver customLineDriver = new LineDrawerAdapter(new CustomLine(Color.YELLOW, 6.9f, true));
 		DriverFeature.addDriver("Custom Line Simulator", customLineDriver);
+
+		JaneDriver janeDriver = new JaneDriver(new LineDrawerAdapter(new CustomLine(Color.RED, 4f, true)));
+		DriverFeature.addDriver("Jane Simulator", janeDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
