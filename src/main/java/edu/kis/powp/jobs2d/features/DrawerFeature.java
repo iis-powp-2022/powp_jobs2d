@@ -8,7 +8,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 
 public class DrawerFeature {
 
-	private static PanelDriverAdapter panelDrawerAdapter;
+	private static PanelDriverAdapter panelDrawerAdapter = new PanelDriverAdapter();
 
 	/**
 	 * Setup Drawer Plugin and add to application.
@@ -18,7 +18,6 @@ public class DrawerFeature {
 	public static void setupDrawerPlugin(Application application) {
 		SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 
-		panelDrawerAdapter = new PanelDriverAdapter();
 		application.addComponentMenu(DrawPanelController.class, "Draw Panel", 0);
 		application.addComponentMenuElement(DrawPanelController.class, "Clear Panel", selectClearPanelOptionListener);
 
