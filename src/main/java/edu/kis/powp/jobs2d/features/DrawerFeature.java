@@ -1,12 +1,14 @@
 package edu.kis.powp.jobs2d.features;
 
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.Job2dDriver;
+import edu.kis.powp.jobs2d.drivers.adapter.PanelDriverAdapter;
 import edu.kis.powp.jobs2d.events.SelectClearPanelOptionListener;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 
 public class DrawerFeature {
 
-	private static DrawPanelController drawerController;
+	private static PanelDriverAdapter panelDrawerAdapter;
 
 	/**
 	 * Setup Drawer Plugin and add to application.
@@ -16,12 +18,14 @@ public class DrawerFeature {
 	public static void setupDrawerPlugin(Application application) {
 		SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 
-		drawerController = new DrawPanelController();
+		panelDrawerAdapter = new PanelDriverAdapter();
 		application.addComponentMenu(DrawPanelController.class, "Draw Panel", 0);
 		application.addComponentMenuElement(DrawPanelController.class, "Clear Panel", selectClearPanelOptionListener);
 
-		drawerController.initialize(application.getFreePanel());
+		panelDrawerAdapter.initialize(application.getFreePanel());
 	}
+
+	public static Job2dDriver getJob2dDriver() { return panelDrawerAdapter; }
 
 	/**
 	 * Get controller of application drawing panel.
@@ -29,6 +33,6 @@ public class DrawerFeature {
 	 * @return drawPanelController.
 	 */
 	public static DrawPanelController getDrawerController() {
-		return drawerController;
+		return panelDrawerAdapter;
 	}
 }
