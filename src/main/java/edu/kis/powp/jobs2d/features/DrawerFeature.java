@@ -8,7 +8,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 
 public class DrawerFeature {
 
-	private static PanelDriverAdapter panelDrawerAdapter = new PanelDriverAdapter();
+	private static final PanelDriverAdapter panelDrawerAdapter = new PanelDriverAdapter();
 
 	/**
 	 * Setup Drawer Plugin and add to application.
