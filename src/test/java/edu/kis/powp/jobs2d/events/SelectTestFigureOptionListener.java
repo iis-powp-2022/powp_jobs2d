@@ -2,20 +2,24 @@ package edu.kis.powp.jobs2d.events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import edu.kis.powp.jobs2d.drivers.DriverManager;
-import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
-	private DriverManager driverManager;
+	private final DriverManager driverManager;
+	private final FigureLambda figure;
 
-	public SelectTestFigureOptionListener(DriverManager driverManager) {
+	public SelectTestFigureOptionListener(DriverManager driverManager, FigureLambda figureLambda) {
 		this.driverManager = driverManager;
+		this.figure = figureLambda;
+	}
+
+	public static SelectTestFigureOptionListener getListenerWithLambda(DriverManager driverManager, FigureLambda figureLambda) {
+		return new SelectTestFigureOptionListener(driverManager, figureLambda);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+		figure.getFigure(driverManager.getCurrentDriver());
 	}
 }
