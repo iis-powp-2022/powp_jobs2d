@@ -4,7 +4,10 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
@@ -38,6 +41,8 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = DrawerFeature.getJob2dDriver();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
+		LineDrawerAdapter dottedLineDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
+		DriverFeature.addDriver("dotted line", dottedLineDriver);
 		DriverFeature.updateDriverInfo();
 	}
 
