@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 
 public class SelectClearPanelOptionListener implements ActionListener {
 
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    DrawerFeature.getDrawerController().clearPanel();
-  }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		DrawerFeature.getDrawerController().clearPanel();
+	}
 }
