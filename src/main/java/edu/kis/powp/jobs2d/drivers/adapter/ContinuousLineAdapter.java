@@ -9,10 +9,10 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * driver adapter to drawer with no bugs.
  */
-public class DrawerDriver extends DrawPanelController implements Job2dDriver {
+public class ContinuousLineAdapter implements Job2dDriver {
 	private int startX = 0, startY = 0;
 
-	public DrawerDriver() {
+	public ContinuousLineAdapter() {
 		super();
 	}
 
@@ -34,6 +34,6 @@ public class DrawerDriver extends DrawPanelController implements Job2dDriver {
 
 	@Override
 	public String toString() {
-		return "Hello world!";
+		return "Drawing continuous line";
 	}
 }
