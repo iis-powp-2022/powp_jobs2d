@@ -14,6 +14,7 @@ import edu.kis.powp.jobs2d.drivers.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.MyDriver;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
+import edu.kis.powp.jobs2d.events.TestFigures;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -33,11 +34,17 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener TestFigureOptionListener2 = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), FiguresJoe::figureScript2);
 
+
+
+		SelectTestFigureOptionListener TestFigureDriverCommands = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), TestFigures::figuresTest1);
+
 //		ActionListener actionListener2 = e -> {
 //			FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver());};
 
 		application.addTest("Figure Joe 1", TestFigureOptionListener1);
 		application.addTest("Figure Joe 2", TestFigureOptionListener2);
+		application.addTest("Figure Test Command Driver", TestFigureDriverCommands);
 	}
 
 	/**
