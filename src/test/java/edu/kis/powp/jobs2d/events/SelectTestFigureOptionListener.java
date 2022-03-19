@@ -10,12 +10,27 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 	private DriverManager driverManager;
 
-	public SelectTestFigureOptionListener(DriverManager driverManager) {
+	private TestOption option;
+
+	public enum TestOption {
+		Test1, Test2;
+	}
+
+	public SelectTestFigureOptionListener(DriverManager driverManager, TestOption option_) {
 		this.driverManager = driverManager;
+		option = option_;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+		switch(option)
+		{
+		case Test1:
+			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
+			break;
+		case Test2:
+			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+			break;
+		}
 	}
 }
