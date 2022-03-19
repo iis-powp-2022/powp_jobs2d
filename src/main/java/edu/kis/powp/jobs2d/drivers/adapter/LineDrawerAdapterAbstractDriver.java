@@ -8,10 +8,12 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 /**
  * driver adapter to drawer using line.
  */
-public class LineDrawerAdapterAbstract extends AbstractDriver {
+public class LineDrawerAdapterAbstractDriver extends AbstractDriver {
+    private ILine line;
 
-    public LineDrawerAdapterAbstract(int x, int y) {
+    public LineDrawerAdapterAbstractDriver(int x, int y, ILine line) {
         super(x, y);
+        this.line = line;
     }
 
     @Override
