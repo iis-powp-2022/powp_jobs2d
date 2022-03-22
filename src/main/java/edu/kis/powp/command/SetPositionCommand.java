@@ -13,8 +13,6 @@ public class SetPositionCommand implements DriverCommand{
         this.driver = driver;
     }
 
-
-
     @Override
     public void execute() {
         driver.setPosition(x, y);
