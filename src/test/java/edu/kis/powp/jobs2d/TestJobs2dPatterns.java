@@ -34,10 +34,15 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener TestFigureOptionListener2 = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), FiguresJoe::figureScript2);
 
-
-
 		SelectTestFigureOptionListener TestFigureDriverCommands = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), TestFigures::figuresTest1);
+
+		SelectTestFigureOptionListener TestFigureSquare = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), TestFigures::figureTestSquare);
+
+		SelectTestFigureOptionListener TestFigureCircle = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), TestFigures::figureTestCircle);
+
 
 //		ActionListener actionListener2 = e -> {
 //			FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver());};
@@ -45,6 +50,8 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Joe 1", TestFigureOptionListener1);
 		application.addTest("Figure Joe 2", TestFigureOptionListener2);
 		application.addTest("Figure Test Command Driver", TestFigureDriverCommands);
+		application.addTest("Figure Test Square", TestFigureSquare);
+		application.addTest("Figure Test Circle", TestFigureCircle);
 	}
 
 	/**
