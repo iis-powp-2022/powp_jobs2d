@@ -1,4 +1,4 @@
-package edu.kis.powp.jobs2d.events;
+package edu.kis.powp;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
 

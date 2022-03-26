@@ -33,4 +33,9 @@ public class TestFigures{
         squareCommand.execute(driver);
     }
 
+    public static void figureTestJoes(Job2dDriver driver) {
+        ComplexCommand squareCommand = FiguresFactory.getJoeCommands();
+        squareCommand.execute(driver);
+    }
+
 }
