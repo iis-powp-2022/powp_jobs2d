@@ -2,6 +2,7 @@ package edu.kis.powp.jobs2d.events;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.AbstractLineDrawerAdapter;
+import edu.kis.powp.jobs2d.factory.FigureHourglassFactory;
 import edu.kis.powp.jobs2d.factory.FigureStarFactory;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
@@ -27,7 +28,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 		else if (figureScriptId == 3)
 			FiguresJane.figureScript(AbstractLineDrawerAdapter.toAbstractDriver(driverManager.getCurrentDriver()));
-		else
+		else if (figureScriptId == 4)
 			FigureStarFactory.createDrawCommand(driverManager.getCurrentDriver()).execute();
+		else
+			FigureHourglassFactory.createDrawCommand(driverManager.getCurrentDriver()).execute();
 	}
 }
