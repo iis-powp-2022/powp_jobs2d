@@ -1,6 +1,6 @@
 package edu.kis.powp.jobs2d.events;
 
-import edu.kis.powp.command.DriverCommand;
+import edu.kis.powp.command.ComplexCommand;
 import edu.kis.powp.command.OperateToCommand;
 import edu.kis.powp.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.Job2dDriver;
@@ -10,14 +10,15 @@ public class TestFigures{
     }
 
     public static void figuresTest1(Job2dDriver driver) {
-        DriverCommand setPositionCommand = new SetPositionCommand(driver);
-        DriverCommand operateToCommand = new OperateToCommand(driver);
+        SetPositionCommand setPositionCommand = new SetPositionCommand();
+        OperateToCommand operateToCommand = new OperateToCommand();
+        ComplexCommand complexCommand = new ComplexCommand();
 
         setPositionCommand.setXY(-100, -100);
-        setPositionCommand.execute();
+        complexCommand.addCommand(setPositionCommand);
         operateToCommand.setXY(0, 100);
-        operateToCommand.execute();
-
+        complexCommand.addCommand(operateToCommand);
+        complexCommand.execute(driver);
 
     }
 }
