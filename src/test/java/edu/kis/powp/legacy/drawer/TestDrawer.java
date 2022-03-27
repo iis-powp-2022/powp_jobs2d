@@ -21,6 +21,6 @@ public class TestDrawer {
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(-100, -60);
 		line.setEndCoordinates(60, 130);
-    controller.drawLine(line);
+		controller.drawLine(line);
 	}
 }
