@@ -13,7 +13,7 @@ public class DrawerFeature {
 	 *
 	 * @param application Application context.
 	 */
-  public static void setupDrawerPlugin(Application application) {
+	public static void setupDrawerPlugin(Application application) {
 		SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 
 		drawerController = new DrawPanelController();

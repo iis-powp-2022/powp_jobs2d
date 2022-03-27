@@ -4,11 +4,13 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.Job2DToDrawPanelAdapter;
+import edu.kis.powp.jobs2d.drivers.command.DriverCommandFactory;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
-import java.awt.EventQueue;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,21 @@ public class TestJobs2dPatterns {
 				selectTestFigureOptionListener);
 		application.addTest(SelectTestFigureOptionListener.FIGURE_JOE_2,
 				selectTestFigureOptionListener);
+		application.addTest("Create Square", e -> {
+			DriverCommandFactory.createSquare().execute(
+					DriverFeature.getDriverManager().getCurrentDriver()
+			);
+		});
+		application.addTest("Create Big Square", e -> {
+			DriverCommandFactory.createBigSquare().execute(
+					DriverFeature.getDriverManager().getCurrentDriver()
+			);
+		});
+		application.addTest("Create Triangle", e -> {
+			DriverCommandFactory.createTriangle().execute(
+					DriverFeature.getDriverManager().getCurrentDriver()
+			);
+		});
 	}
 
 	/**
@@ -45,7 +62,7 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new Job2DToDrawPanelAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
-    DriverFeature.updateDriverInfo();
+		DriverFeature.updateDriverInfo();
 	}
 
 	/**
