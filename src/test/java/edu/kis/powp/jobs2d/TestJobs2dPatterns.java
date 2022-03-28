@@ -2,6 +2,8 @@ package edu.kis.powp.jobs2d;
 
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.factory.Joe1Factory;
+import edu.kis.powp.command.factory.Joe2Factory;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapterDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapterDriver;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapterAbstractDriver;
@@ -74,6 +76,19 @@ public class TestJobs2dPatterns {
         application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
     }
 
+
+    private static void testJoe1Factory(){
+        Joe1Factory test = new Joe1Factory(new DrawerAdapterDriver());
+        test.setRectangle();
+        test.DrawRectangle();
+    }
+
+    private static void testJoe2Factory(){
+        Joe2Factory test = new Joe2Factory(new LineDrawerAdapterDriver(LineFactory.getSpecialLine()));
+        test.setRectangle();
+        test.DrawRectangle();
+    }
+
     /**
      * Launch the application.
      */
@@ -88,7 +103,13 @@ public class TestJobs2dPatterns {
                 setupPresetTests(app);
                 setupLogger(app);
 
+
+
                 app.setVisibility(true);
+
+                testJoe1Factory();
+                testJoe2Factory();
+
             }
         });
     }
