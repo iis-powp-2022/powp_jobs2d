@@ -27,14 +27,14 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		Consumer<Job2dDriver> test1 = FiguresJoe::figureScript1;
-		Consumer<Job2dDriver> test2 = FiguresJoe::figureScript2;
+		SelectTestFigureOptionListener selectTestFigure1OptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), SelectTestFigureOptionListener.Test.FIGURE_JOE_1);
 
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigure2OptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), SelectTestFigureOptionListener.Test.FIGURE_JOE_2);
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", selectTestFigure1OptionListener);
+		application.addTest("Figure Joe 2", selectTestFigure2OptionListener);
 	}
 
 	/**
