@@ -7,7 +7,10 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.factory.Joe1Factory;
+import edu.kis.powp.command.factory.Joe2Factory;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerDroverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
@@ -81,6 +84,18 @@ public class TestJobs2dPatterns {
 		application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
 	}
 
+	private static void testJoe1Factory(){
+		Joe1Factory test = new Joe1Factory(new DrawerDroverAdapter());
+		test.setRectangle();
+		test.DrawRectangle();
+	}
+
+	private static void testJoe2Factory(){
+		Joe2Factory test = new Joe2Factory(new LineDrawerAdapter());
+		test.setRectangle();
+		test.DrawRectangle();
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -97,6 +112,9 @@ public class TestJobs2dPatterns {
 				setupLogger(app);
 
 				app.setVisibility(true);
+
+				testJoe1Factory();
+				testJoe2Factory();
 			}
 		});
 	}
