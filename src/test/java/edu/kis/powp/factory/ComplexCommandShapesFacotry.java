@@ -23,6 +23,19 @@ public class ComplexCommandShapesFacotry {
 		driverCommands.add(new OperateToCommand(driver, startX, startY));
 
 		return new ComplexCommand(driverCommands);
+	}
 
+	public static ComplexCommand getComplexCommandToRepresentDiamond(Job2dDriver driver, int centerX, int centerY,
+			int a) {
+		List<DriverCommand> driverCommands = new ArrayList<DriverCommand>();
+
+		driverCommands.add(new SetPositionCommand(driver, centerX, centerY + a));
+
+		driverCommands.add(new OperateToCommand(driver, centerX + a, centerY));
+		driverCommands.add(new OperateToCommand(driver, centerX, centerY - a));
+		driverCommands.add(new OperateToCommand(driver, centerX - a, centerY));
+		driverCommands.add(new OperateToCommand(driver, centerX, centerY + a));
+
+		return new ComplexCommand(driverCommands);
 	}
 }

@@ -22,6 +22,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 		else if (e.getActionCommand() == FigureOption.PAT_TERN_1.getNameOfFigure())
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 		else if (e.getActionCommand() == FigureOption.RECTANGLE_1.getNameOfFigure())
-			ComplexCommandShapesFacotry.getComplexCommandToRepresentRectangle(driverManager.getCurrentDriver(), -120, -120, 40, 50).excecute();
+			ComplexCommandShapesFacotry
+					.getComplexCommandToRepresentRectangle(driverManager.getCurrentDriver(), -120, -120, 40, 50)
+					.excecute();
+		else if (e.getActionCommand() == FigureOption.DIAMOND_1.getNameOfFigure())
+			ComplexCommandShapesFacotry.getComplexCommandToRepresentDiamond(driverManager.getCurrentDriver(), 0, 0, 59)
+					.excecute();
+		;
 	}
 }
