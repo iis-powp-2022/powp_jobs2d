@@ -11,6 +11,7 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawLinesByMoving;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.events.FigureOption;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -28,8 +29,9 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager());
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		application.addTest("Pat Tern 1", selectTestFigureOptionListener);
+		application.addTest(FigureOption.FIGURE_JOHN_1.getNameOfFigure(), selectTestFigureOptionListener);
+		application.addTest(FigureOption.PAT_TERN_1.getNameOfFigure(), selectTestFigureOptionListener);
+		application.addTest(FigureOption.RECTANGLE_1.getNameOfFigure(), selectTestFigureOptionListener);
 	}
 
 	/**
@@ -45,10 +47,10 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawLinesByMoving();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
 
-        Job2dDriver dottedDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
+		Job2dDriver dottedDriver = new LineDrawerAdapter(LineFactory.getDottedLine());
 		DriverFeature.addDriver("Dotted Simulator", dottedDriver);
 
-        Job2dDriver specialDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		Job2dDriver specialDriver = new LineDrawerAdapter(LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Simulator", specialDriver);
 
 		DriverFeature.updateDriverInfo();
