@@ -8,10 +8,6 @@ import java.util.List;
 public class ComplexCommand implements DriverCommand{
     List<DriverCommand> commandList = new ArrayList<>();
 
-    public ComplexCommand(List<DriverCommand> commandList) {
-        this.commandList = commandList;
-    }
-
     public ComplexCommand(){}
 
     @Override
@@ -21,10 +17,12 @@ public class ComplexCommand implements DriverCommand{
         }
     }
 
-    public void add(DriverCommand dc){
+    public ComplexCommand add(DriverCommand dc){
         commandList.add(dc);
+        return this;
     }
-    public void clear(){
-        commandList.clear();
+    public ComplexCommand add(List<DriverCommand> dcl){
+        commandList.addAll(dcl);
+        return this;
     }
 }

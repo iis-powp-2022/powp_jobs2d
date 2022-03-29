@@ -26,10 +26,11 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupPresetTests(Application application) {
 
-		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(),1));
-		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(),2));
+		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),1));
+		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),2));
+		application.addTest("Draw Square", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),3));
+		application.addTest("Draw Rectangle", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),4));
+		application.addTest("Draw Triangle", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(),5));
 	}
 
 	/**
