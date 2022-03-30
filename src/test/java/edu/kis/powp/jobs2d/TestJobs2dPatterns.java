@@ -7,8 +7,11 @@ import java.util.logging.Logger;
 
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
+import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DriverToDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.events.FigureTypes;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -23,10 +26,19 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager());
+		SelectTestFigureOptionListener selectTestFigureOneOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureTypes.FIGURES_JOE_1);
+		SelectTestFigureOptionListener selectTestFigureTwoOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureTypes.FIGURES_JOE_2);
+		SelectTestFigureOptionListener selectTestRectangleOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureTypes.RECTANGLE);
+		SelectTestFigureOptionListener selectTestPythagoreanTriangleOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureTypes.PYTHAGOREAN_TRIANGLE);
 
-		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 1", selectTestFigureOneOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureTwoOptionListener);
+		application.addTest("Figure Rectangle", selectTestRectangleOptionListener);
+		application.addTest("Figure Pythagorean Triangle", selectTestPythagoreanTriangleOptionListener);
 	}
 
 	/**
@@ -39,9 +51,14 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new MyAdapter();
+		Job2dDriver testDriver = new DriverToDrawerAdapter();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
-
+		Job2dDriver basicLineDrawer = new LineDrawerAdapter(LineFactory.getBasicLine());
+		DriverFeature.addDriver("Basic Line Drawer", basicLineDrawer);
+		Job2dDriver dottedLineDrawer = new LineDrawerAdapter(LineFactory.getDottedLine());
+		DriverFeature.addDriver("Dotted Line Drawer", dottedLineDrawer);
+		Job2dDriver specialLineDrawer = new LineDrawerAdapter(LineFactory.getSpecialLine());
+		DriverFeature.addDriver("Special Line Drawer", specialLineDrawer);
 		DriverFeature.updateDriverInfo();
 	}
 
@@ -83,7 +100,6 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
