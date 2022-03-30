@@ -4,7 +4,7 @@ import edu.kis.legacy.drawer.shape.ILine;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 public class DrawerToJobs2dAdapterLineTypeChoosable extends DrawerToJobs2dAdapter{
-    ILine lineType;
+    private final ILine lineType;
 
     public DrawerToJobs2dAdapterLineTypeChoosable(ILine lineType){
         super();
