@@ -33,8 +33,8 @@ public class SelectTestFigureOptionListener implements ActionListener {
 					ComplexCommandFactory.
 					getRectangle(-100,-50,200,100).
 					execute(driverManager.getCurrentDriver()); break;
-			case drawRightEquilateralTriangle:					ComplexCommandFactory.
-					getRightEquilateralTriangle(-100,-50,100).
+			case drawRightIsoscelesTriangle:					ComplexCommandFactory.
+					getRightIsoscelesTriangle(-100,-50,100).
 					execute(driverManager.getCurrentDriver()); break;
 			//idk how to handle that so for example performing figureScript1 probably should throw exception or ignore?
 			default:

@@ -20,7 +20,7 @@ public class ComplexCommandFactory {
         return new ComplexCommand(listOfCommands);
     }
 
-    public static ComplexCommand getRightEquilateralTriangle(int x, int y, int sideLen) {
+    public static ComplexCommand getRightIsoscelesTriangle(int x, int y, int sideLen) {
         List<DriverCommand> listOfCommands = new ArrayList<>();
         listOfCommands.add(new SetPositionCommand(x, y));
         listOfCommands.add(new OperateToCommand(x , y+sideLen));
