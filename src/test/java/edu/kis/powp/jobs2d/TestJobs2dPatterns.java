@@ -32,6 +32,8 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager(),TestSelector.figureScript2));
 		application.addTest("Draw rectangle", new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(),TestSelector.drawRectangle));
+		application.addTest("Draw RightEquilateralTriangle", new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(),TestSelector.drawRightEquilateralTriangle));
 	}
 
 	/**
