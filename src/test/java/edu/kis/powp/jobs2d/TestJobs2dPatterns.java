@@ -11,6 +11,7 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverToDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.events.FigureTypes;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -26,12 +27,18 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupPresetTests(Application application) {
 		SelectTestFigureOptionListener selectTestFigureOneOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), 1);
+				DriverFeature.getDriverManager(), FigureTypes.FIGURES_JOE_1);
 		SelectTestFigureOptionListener selectTestFigureTwoOptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), 2);
+				DriverFeature.getDriverManager(), FigureTypes.FIGURES_JOE_2);
+		SelectTestFigureOptionListener selectTestRectangleOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureTypes.RECTANGLE);
+		SelectTestFigureOptionListener selectTestPythagoreanTriangleOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), FigureTypes.PYTHAGOREAN_TRIANGLE);
 
 		application.addTest("Figure Joe 1", selectTestFigureOneOptionListener);
 		application.addTest("Figure Joe 2", selectTestFigureTwoOptionListener);
+		application.addTest("Figure Rectangle", selectTestRectangleOptionListener);
+		application.addTest("Figure Pythagorean Triangle", selectTestPythagoreanTriangleOptionListener);
 	}
 
 	/**
