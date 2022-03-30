@@ -4,29 +4,40 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.drivers.command.ComplexCommand;
+import edu.kis.powp.jobs2d.drivers.factories.ComplexCommandFactory;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
+
+
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
 	private final DriverManager driverManager;
-	private final int testNo;
+	private final TestSelector testChoice;
 
 	public SelectTestFigureOptionListener(DriverManager driverManager) {
 		this.driverManager = driverManager;
-		this.testNo = 0;
+		this.testChoice = TestSelector.figureScript1;
 	}
 
-	public SelectTestFigureOptionListener(DriverManager driverManager, int testNumber) {
+	public SelectTestFigureOptionListener(DriverManager driverManager, TestSelector testChoice) {
 		this.driverManager = driverManager;
-		this.testNo = testNumber;
+		this.testChoice = testChoice;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (testNo == 0) {
-			FiguresJoe.figureScript1(driverManager.getCurrentDriver());
-		} else {
-			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+		switch(testChoice){
+			case figureScript1: FiguresJoe.figureScript1(driverManager.getCurrentDriver()); break;
+			case figureScript2:	FiguresJoe.figureScript2(driverManager.getCurrentDriver()); break;
+			case drawRectangle: ComplexCommandFactory.
+					getRectangle(-100,-50,200,100).
+					execute(
+							driverManager.getCurrentDriver()
+					); break;
+			default: //idk how to handle that so for example performing figureScript1 probably should throw exception?
+				FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 		}
+
 	}
 }
