@@ -31,6 +31,20 @@ public class OperateToCommand implements DriverCommand {
         this.driver = driver;
     }
 
+    public OperateToCommand(int x, int y, Job2dDriver driver) {
+        this.x = x;
+        this.y = y;
+        this.driver = driver;
+    }
+
+    @Override
+    public String toString() {
+        return "OperateToCommand{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     @Override
     public void execute() {
         this.driver.operateTo(this.x, this.y);
