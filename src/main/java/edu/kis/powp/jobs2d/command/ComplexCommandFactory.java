@@ -21,4 +21,16 @@ public class ComplexCommandFactory {
 		command.addCommand(new OperateToCommand(-50, -50));
 		return command;
 	}
+
+	public static DriverCommand getFigureJoe1() {
+		return new ComplexCommandBuilder().setPosition(-120, -120)
+				.operateTo(120, -120)
+				.operateTo(120, 120)
+				.operateTo(-120, 120)
+				.operateTo(-120, -120)
+				.operateTo(120, 120)
+				.setPosition(120, -120)
+				.operateTo(-120, 120)
+				.getResult();
+	}
 }
