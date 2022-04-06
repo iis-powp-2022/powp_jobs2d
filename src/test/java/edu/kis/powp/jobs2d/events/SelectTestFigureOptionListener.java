@@ -9,7 +9,7 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 	public enum Test {
-		FIGURE_JOE_1, FIGURE_JOE_2, RECTANGLE, TRIANGLE
+		FIGURE_JOE_1, FIGURE_JOE_2, RECTANGLE, TRIANGLE, COMMAND_BUILDER
 	}
 
 
@@ -35,6 +35,9 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case TRIANGLE:
 				ComplexCommandFactory.getTriangle().execute(driverManager.getCurrentDriver());
+				break;
+			case COMMAND_BUILDER:
+				ComplexCommandFactory.getFigureJoe1().execute(driverManager.getCurrentDriver());
 				break;
 		}
 	}

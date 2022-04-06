@@ -39,10 +39,14 @@ public class TestJobs2dPatterns {
 		SelectTestFigureOptionListener selectTriangleOptionListener = new SelectTestFigureOptionListener(
 				DriverFeature.getDriverManager(), SelectTestFigureOptionListener.Test.TRIANGLE);
 
+		SelectTestFigureOptionListener selectCommandBuilderOptionListener = new SelectTestFigureOptionListener(
+				DriverFeature.getDriverManager(), SelectTestFigureOptionListener.Test.COMMAND_BUILDER);
+
 		application.addTest("Figure Joe 1", selectTestFigure1OptionListener);
 		application.addTest("Figure Joe 2", selectTestFigure2OptionListener);
 		application.addTest("Rectangle", selectRectangleOptionListener);
 		application.addTest("Triangle", selectTriangleOptionListener);
+		application.addTest("Figure Joe 1 Command Builder", selectCommandBuilderOptionListener);
 	}
 
 	/**
