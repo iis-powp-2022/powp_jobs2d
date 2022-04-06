@@ -5,7 +5,7 @@ import edu.kis.powp.jobs2d.Job2dDriver;
 import java.util.ArrayList;
 
 public class ComplexCommand implements DriverCommand {
-	private ArrayList<DriverCommand> commands;
+	private final ArrayList<DriverCommand> commands = new ArrayList<>();
 
 	public void addCommand(DriverCommand command) {
 		this.commands.add(command);
