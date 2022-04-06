@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.factories.ComplexCommandFactory;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
@@ -25,6 +26,14 @@ public class SelectTestFigureOptionListener implements ActionListener {
 
 			case 2:
 			FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+			break;
+
+			case 3:
+			ComplexCommandFactory.getRectangle().execute(driverManager.getCurrentDriver());
+			break;
+
+			case 4:
+			ComplexCommandFactory.getStar().execute(driverManager.getCurrentDriver());
 			break;
 		}
 		

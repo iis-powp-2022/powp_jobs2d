@@ -6,11 +6,15 @@ public class OperateToCommand implements DriverCommand{
 
     private int x;
     private int y;
-    private Job2dDriver driver;
+
+    public OperateToCommand(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     @Override
-    public void execute() {
-        driver.operateTo(x, y);
+    public void execute(Job2dDriver job2dDriver) {
+        job2dDriver.operateTo(x, y);
         
     }
     
