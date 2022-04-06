@@ -1,10 +1,8 @@
 package edu.kis.powp.jobs2d;
-
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.line.BasicLine;
@@ -28,15 +26,11 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-//		SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(DriverFeature.getDriverManager());
-
 		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TypesOfFigure.FIGURE1));
 		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TypesOfFigure.FIGURE2));
-
 		application.addTest("Square", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TypesOfFigure.SQUARE));
 		application.addTest("Triangle", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TypesOfFigure.TRIANGLE));
 		application.addTest("Rectangle", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), TypesOfFigure.RECTANGLE));
-
 	}
 
 	/**
@@ -48,17 +42,10 @@ public class TestJobs2dPatterns {
 		Job2dDriver loggerDriver = new LoggerDriver();
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
-
-		Job2dDriver testDriver = new DrawerDriverAdapter();
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
-
-		Job2dDriver basicDriver = new LineDrawerDriverAdapter(new BasicLine());
-		DriverFeature.addDriver("Basic Driver", basicDriver);
-		Job2dDriver dottedDriver = new LineDrawerDriverAdapter(new DottedLine());
-		DriverFeature.addDriver("Dotted Driver", dottedDriver);
-		Job2dDriver specialDriver = new LineDrawerDriverAdapter(new SpecialLine());
-		DriverFeature.addDriver("Special Driver", specialDriver);
-
+		DriverFeature.addDriver("Buggy Simulator", new DrawerDriverAdapter());
+		DriverFeature.addDriver("Basic Driver", new LineDrawerDriverAdapter(new BasicLine()));
+		DriverFeature.addDriver("Dotted Driver", new LineDrawerDriverAdapter(new DottedLine()));
+		DriverFeature.addDriver("Special Driver", new LineDrawerDriverAdapter(new SpecialLine()));
 		DriverFeature.updateDriverInfo();
 	}
 
@@ -81,14 +68,11 @@ public class TestJobs2dPatterns {
 	 */
 	private static void setupLogger(Application application) {
 		application.addComponentMenu(Logger.class, "Logger", 0);
-		application.addComponentMenuElement(Logger.class, "Clear log",
-				(ActionEvent e) -> application.flushLoggerOutput());
+		application.addComponentMenuElement(Logger.class, "Clear log", (ActionEvent e) -> application.flushLoggerOutput());
 		application.addComponentMenuElement(Logger.class, "Fine level", (ActionEvent e) -> logger.setLevel(Level.FINE));
 		application.addComponentMenuElement(Logger.class, "Info level", (ActionEvent e) -> logger.setLevel(Level.INFO));
-		application.addComponentMenuElement(Logger.class, "Warning level",
-				(ActionEvent e) -> logger.setLevel(Level.WARNING));
-		application.addComponentMenuElement(Logger.class, "Severe level",
-				(ActionEvent e) -> logger.setLevel(Level.SEVERE));
+		application.addComponentMenuElement(Logger.class, "Warning level", (ActionEvent e) -> logger.setLevel(Level.WARNING));
+		application.addComponentMenuElement(Logger.class, "Severe level", (ActionEvent e) -> logger.setLevel(Level.SEVERE));
 		application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
 	}
 
@@ -100,15 +84,12 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
 				setupPresetTests(app);
 				setupLogger(app);
-
 				app.setVisibility(true);
 			}
 		});
 	}
-
 }

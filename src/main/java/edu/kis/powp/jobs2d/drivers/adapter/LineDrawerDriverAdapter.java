@@ -41,4 +41,5 @@ public class LineDrawerDriverAdapter extends DrawPanelController implements Job2
             return "Normal line. Start cord: x = " + this.startY + " y = " + this.startY;
         }
     }
+
 }

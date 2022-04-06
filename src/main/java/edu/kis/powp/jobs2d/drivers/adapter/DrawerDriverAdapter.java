@@ -35,4 +35,5 @@ public class DrawerDriverAdapter extends DrawPanelController implements Job2dDri
 	public String toString() {
 		return "Start cord: x = " + this.startY + " y = " + this.startY;
 	}
+
 }

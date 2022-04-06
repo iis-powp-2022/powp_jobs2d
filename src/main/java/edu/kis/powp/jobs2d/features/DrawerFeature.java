@@ -31,4 +31,5 @@ public class DrawerFeature {
 	public static DrawPanelController getDrawerController() {
 		return drawerController;
 	}
+
 }
