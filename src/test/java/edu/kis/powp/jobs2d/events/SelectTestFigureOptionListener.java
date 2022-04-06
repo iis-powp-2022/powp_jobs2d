@@ -2,11 +2,8 @@ package edu.kis.powp.jobs2d.events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.function.Consumer;
 
-import edu.kis.powp.jobs2d.Job2dDriver;
-import edu.kis.powp.jobs2d.command.ComplexCommandBuilder;
+import edu.kis.powp.jobs2d.command.ComplexCommandFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
@@ -34,10 +31,10 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
 				break;
 			case RECTANGLE:
-				ComplexCommandBuilder.getRectangle().execute(driverManager.getCurrentDriver());
+				ComplexCommandFactory.getRectangle().execute(driverManager.getCurrentDriver());
 				break;
 			case TRIANGLE:
-				ComplexCommandBuilder.getTriangle().execute(driverManager.getCurrentDriver());
+				ComplexCommandFactory.getTriangle().execute(driverManager.getCurrentDriver());
 				break;
 		}
 	}

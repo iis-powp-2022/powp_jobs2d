@@ -1,7 +1,7 @@
 package edu.kis.powp.jobs2d.command;
 
-public class ComplexCommandBuilder {
-	private ComplexCommandBuilder() {}
+public class ComplexCommandFactory {
+	private ComplexCommandFactory() {}
 
 	public static DriverCommand getRectangle() {
 		ComplexCommand command = new ComplexCommand();
