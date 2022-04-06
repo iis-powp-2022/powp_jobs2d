@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.function.Consumer;
 
 import edu.kis.powp.jobs2d.Job2dDriver;
+import edu.kis.powp.jobs2d.command.ComplexCommandBuilder;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 	public enum Test {
-		FIGURE_JOE_1, FIGURE_JOE_2
+		FIGURE_JOE_1, FIGURE_JOE_2, RECTANGLE, TRIANGLE
 	}
 
 
@@ -31,6 +32,12 @@ public class SelectTestFigureOptionListener implements ActionListener {
 				break;
 			case FIGURE_JOE_2:
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+			case RECTANGLE:
+				ComplexCommandBuilder.getRectangle().execute(driverManager.getCurrentDriver());
+				break;
+			case TRIANGLE:
+				ComplexCommandBuilder.getTriangle().execute(driverManager.getCurrentDriver());
 				break;
 		}
 	}
