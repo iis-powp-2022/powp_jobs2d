@@ -10,10 +10,11 @@ import java.awt.*;
 
 public class LineDrawerDriverAdapter extends DrawPanelController implements Job2dDriver {
     private int startX = 0, startY = 0;
-    private ILine lineType;
+    private ILine line;
 
     public LineDrawerDriverAdapter(ILine lineType) {
-        this.lineType = lineType;
+        super();
+        this.line = lineType;
     }
 
     @Override
@@ -24,19 +25,17 @@ public class LineDrawerDriverAdapter extends DrawPanelController implements Job2
 
     @Override
     public void operateTo(int x, int y) {
-        ILine line = lineType;
         line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-
         DrawerFeature.getDrawerController().drawLine(line);
         setPosition(x,y);
     }
 
     @Override
     public String toString() {
-        if (lineType.isDotted()) {
+        if (line.isDotted()) {
             return "Dotted line. Start cord: x = " + this.startY + " y = " + this.startY;
-        } else if (lineType.getColor() == Color.CYAN) {
+        } else if (line.getColor() == Color.CYAN) {
             return "Special line. Start cord: x = " + this.startY + " y = " + this.startY;
         } else {
             return "Normal line. Start cord: x = " + this.startY + " y = " + this.startY;

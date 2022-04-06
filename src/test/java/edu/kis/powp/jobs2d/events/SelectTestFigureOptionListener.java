@@ -1,9 +1,9 @@
 package edu.kis.powp.jobs2d.events;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import edu.kis.powp.factory.FiguresFactory;
 import edu.kis.powp.jobs2d.drivers.DriverManager;
+import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.powp.jobs2d.resources.TypesOfFigure;
 
@@ -20,12 +20,24 @@ public class SelectTestFigureOptionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(figureType){
-			case Figure1: {
+			case FIGURE1: {
 				FiguresJoe.figureScript1(driverManager.getCurrentDriver());
 				break;
 			}
-			case Figure2:{
+			case FIGURE2: {
 				FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+				break;
+			}
+			case RECTANGLE: {
+				FiguresFactory.getRectangleComplexCommand().execute(DriverFeature.getDriverManager().getCurrentDriver());
+				break;
+			}
+			case SQUARE: {
+				FiguresFactory.getSquareComplexCommand().execute(DriverFeature.getDriverManager().getCurrentDriver());
+				break;
+			}
+			case TRIANGLE: {
+				FiguresFactory.getTriangleComplexCommand().execute(DriverFeature.getDriverManager().getCurrentDriver());
 				break;
 			}
 		}
