@@ -5,10 +5,13 @@ import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.event.MouseInputAdapter;
+
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
-import edu.kis.powp.jobs2d.drivers.adapter.MyAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -27,6 +30,8 @@ public class TestJobs2dPatterns {
 				DriverFeature.getDriverManager());
 
 		application.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		application.addTest("Figure Joe 2", selectTestFigureOptionListener);
+		application.addTest("Rectangle", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -39,9 +44,12 @@ public class TestJobs2dPatterns {
 		DriverFeature.addDriver("Logger Driver", loggerDriver);
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
-		Job2dDriver testDriver = new MyAdapter();
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		Job2dDriver testDriver = new DrawerAdapter();
+		DriverFeature.addDriver("Normal Line", testDriver);
+		DriverFeature.updateDriverInfo();
 
+        Job2dDriver lineDriver = new LineDrawerAdapter();
+		DriverFeature.addDriver("Special Line", lineDriver);
 		DriverFeature.updateDriverInfo();
 	}
 
@@ -73,6 +81,17 @@ public class TestJobs2dPatterns {
 		application.addComponentMenuElement(Logger.class, "Severe level",
 				(ActionEvent e) -> logger.setLevel(Level.SEVERE));
 		application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
+
+	}
+
+	private static void setMouseDrawer(Application application) {
+		application.getFreePanel().addMouseListener(new MouseInputAdapter() {
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				DriverFeature.getDriverManager().getCurrentDriver().operateTo(e.getX() - 268, e.getY() - 227);
+				System.out.println("X: " + e.getX() + " Y: " + e.getY());
+			};
+		});
 	}
 
 	/**
@@ -83,12 +102,13 @@ public class TestJobs2dPatterns {
 			public void run() {
 				Application app = new Application("2d jobs Visio");
 				DrawerFeature.setupDrawerPlugin(app);
-				setupDefaultDrawerVisibilityManagement(app);
+				// setupDefaultDrawerVisibilityManagement(app);
 
 				DriverFeature.setupDriverPlugin(app);
 				setupDrivers(app);
 				setupPresetTests(app);
 				setupLogger(app);
+				setMouseDrawer(app);
 
 				app.setVisibility(true);
 			}
