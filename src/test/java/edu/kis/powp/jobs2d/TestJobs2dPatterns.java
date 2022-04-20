@@ -57,7 +57,6 @@ public class TestJobs2dPatterns {
         DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
         application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
                 new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-        defaultDrawerWindow.setVisible(true);
     }
 
     /**
