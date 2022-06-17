@@ -7,8 +7,12 @@ import edu.kis.powp.jobs2d.features.DrawerFeature;
 
 public class LineDrawerAdapter extends DrawPanelController implements Job2dDriver{
 	private int startX = 0, startY = 0;
+	private DrawPanelController drawerController;
 
-	public LineDrawerAdapter() { super(); }
+	public LineDrawerAdapter(DrawPanelController drawerController_) {
+		super();
+		drawerController=drawerController_;
+	}
 
 	@Override
 	public void setPosition(int x, int y) {
