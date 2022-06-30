@@ -13,7 +13,6 @@ public class DriverAdapter implements Job2dDriver {
 	private DrawPanelController drawPanelController;
 
 	public DriverAdapter(DrawPanelController drawPanelController) {
-		super();
 		this.drawPanelController = drawPanelController;
 	}
 
