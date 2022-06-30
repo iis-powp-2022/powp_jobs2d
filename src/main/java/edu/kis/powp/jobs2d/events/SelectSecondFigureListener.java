@@ -8,14 +8,14 @@ import java.awt.event.ActionListener;
 
 public class SelectSecondFigureListener implements ActionListener {
 
-    private DriverManager driverManager;
+	private DriverManager driverManager;
 
-    public SelectSecondFigureListener(DriverManager driverManager) {
-        this.driverManager = driverManager;
-    }
+	public SelectSecondFigureListener(DriverManager driverManager) {
+		this.driverManager = driverManager;
+	}
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        FiguresJoe.figureScript2(driverManager.getCurrentDriver());
-    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		FiguresJoe.figureScript2(driverManager.getCurrentDriver());
+	}
 }
