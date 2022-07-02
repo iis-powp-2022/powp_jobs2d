@@ -8,7 +8,7 @@ public class LineDrawerAdapter implements Job2dDriver {
 
 	private int startX = 0, startY = 0;
 	private DrawPanelController drawPanelController;
-	ILine line;
+	private ILine line;
 
 	public LineDrawerAdapter(DrawPanelController drawPanelController, ILine line) {
 		this.drawPanelController = drawPanelController;
